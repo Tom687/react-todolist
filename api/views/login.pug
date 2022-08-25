@@ -1,0 +1,17 @@
+extends base
+
+block content
+	main.main
+	#login-form.login-form
+		h2.heading Se connecter
+		form.form.form--login
+			.form__group
+				label.form__label(for='email') Adresse email
+				input#email.form__input(type='email', placeholder='Adresse email')
+			.form__group
+				label.form__label(for='password') Mot de passe
+				input#password.form__input(type='password', placeholder='Mot de passe')
+			.form__group
+				button.btn.btn--green Connexion
+
+	//script(src='/js/login.js')

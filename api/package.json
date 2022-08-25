@@ -1,0 +1,44 @@
+{
+  "name": "todo_v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start:dev": "nodemon server.js",
+    "start:prod": "set NODE_ENV=production && server.js",
+    "watch:js": "parcel watch --no-hmr ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
+    "build:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tom Pomarede",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.0",
+    "connect-redis": "^5.0.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.2.3",
+    "express-session": "^1.17.1",
+    "helmet": "^4.3.1",
+    "hpp": "^0.2.3",
+    "html-to-text": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.15",
+    "moment": "^2.29.1",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.4.17",
+    "nodemon": "^2.0.7",
+    "pg": "^8.5.1",
+    "pug": "^3.0.0",
+    "redis": "^3.0.2",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="525d0885-1648-4937-a4cf-c4bae3d56d0a" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/client" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="1mhktafwZrAfqqehxYqHBN5Bc1r" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="16.17.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="16.11.51" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client" />
+      <recent name="$PROJECT_DIR$/api/views" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/views" />
+      <recent name="$PROJECT_DIR$/client/src/features/TodoList/TodoList" />
+      <recent name="$PROJECT_DIR$/client/build" />
+      <recent name="$PROJECT_DIR$/api/views/build" />
+      <recent name="$PROJECT_DIR$/api" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="525d0885-1648-4937-a4cf-c4bae3d56d0a" name="Default Changelist" comment="" />
+      <created>1609953425659</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609953425659</updated>
+      <workItem from="1609953427503" duration="14244000" />
+      <workItem from="1610048466549" duration="712000" />
+      <workItem from="1610055378320" duration="13719000" />
+      <workItem from="1610911038950" duration="1216000" />
+      <workItem from="1611399316630" duration="596000" />
+      <workItem from="1613766115050" duration="38000" />
+      <workItem from="1616061655475" duration="929000" />
+      <workItem from="1616077087239" duration="28000" />
+      <workItem from="1616077134664" duration="20665000" />
+      <workItem from="1616097867489" duration="817000" />
+      <workItem from="1616099286690" duration="6006000" />
+      <workItem from="1616408223660" duration="7605000" />
+      <workItem from="1637514892090" duration="53563000" />
+      <workItem from="1638823484981" duration="25375000" />
+      <workItem from="1639195531409" duration="1940000" />
+      <workItem from="1639280468880" duration="10050000" />
+      <workItem from="1660953275686" duration="677000" />
+      <workItem from="1660962294133" duration="2045000" />
+      <workItem from="1661424617740" duration="232000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1604" y="456" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1639184228200">
+      <screen x="0" y="25" width="2560" height="1340" />
+    </state>
+    <state x="1604" y="456" key="#com.intellij.fileTypes.FileTypeChooser/0.25.2560.1340@0.25.2560.1340" timestamp="1639184228200" />
+    <state x="1604" y="457" key="#com.intellij.fileTypes.FileTypeChooser/0.25.2560.1344@0.25.2560.1344" timestamp="1638225536981" />
+    <state x="1532" y="563" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1638846989046">
+      <screen x="0" y="25" width="2560" height="1340" />
+    </state>
+    <state x="1532" y="563" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.25.2560.1340@0.25.2560.1340" timestamp="1638846989046" />
+    <state x="1317" y="125" width="1134" height="1070" key="DiffContextDialog" timestamp="1638146386857">
+      <screen x="0" y="25" width="2560" height="1344" />
+    </state>
+    <state x="1317" y="125" width="1134" height="1070" key="DiffContextDialog/0.25.2560.1344@0.25.2560.1344" timestamp="1638146386857" />
+    <state x="1537" y="400" width="694" height="518" key="find.popup" timestamp="1639599032867">
+      <screen x="0" y="25" width="2560" height="1340" />
+    </state>
+    <state x="1537" y="400" width="694" height="518" key="find.popup/0.25.2560.1340@0.25.2560.1340" timestamp="1639599032867" />
+    <state x="1537" y="401" width="694" height="518" key="find.popup/0.25.2560.1344@0.25.2560.1344" timestamp="1638391886229" />
+    <state x="1549" y="313" width="670" height="676" key="search.everywhere.popup" timestamp="1637713916244">
+      <screen x="0" y="25" width="2560" height="1344" />
+    </state>
+    <state x="1549" y="313" width="670" height="676" key="search.everywhere.popup/0.25.2560.1344@0.25.2560.1344" timestamp="1637713916244" />
+  </component>
+</project>
