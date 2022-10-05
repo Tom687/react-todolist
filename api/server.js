@@ -11,7 +11,7 @@ process.on('uncaughtException', err => {
 // Setting env variables
 dotenv.config({ path: './config.env' });
 
-const app = require('./app');
+const app = require('./src/app');
 
 // Listening server
 const port = process.env.PORT || 3000;

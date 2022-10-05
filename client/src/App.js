@@ -9,6 +9,7 @@ import TodoList from './features/TodoList/TodoList/TodoList';
 import Footer from './features/TodoList/Filter/Footer';
 //import InlineEdit from './components/InlineEdit/InlineEdit';
 import axios from 'axios';
+import RoleSwitch from './components/auth/roleSwitch';
 
 function App() {
 	
@@ -51,6 +52,7 @@ function App() {
 					<InlineEdit text={storedText} onSetText={text => setStoredText(text)} />
 				</p>*/}
 				<button onClick={() => logout()}>Logout</button>
+				<RoleSwitch />
 				<AddTodoForm/>
 				<TodoList/>
 				<Footer/>

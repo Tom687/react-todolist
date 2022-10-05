@@ -1,6 +1,6 @@
-FROM node:14.15.0
+FROM node:16.16.0
 
-WORKDIR /usr/src/todo_v2
+WORKDIR /usr/src/todolist
 
 COPY ./ ./
 

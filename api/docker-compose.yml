@@ -3,18 +3,17 @@ version: '3.8'
 services:
   # Backend API
   todo_api:
-    container_name: backend
+    #container_name: todolist
     build: ./
-    command: npm run start:dev
-    working_dir: /usr/src/todo_v2
+    command: npm start
+    working_dir: /usr/src/todolist
     environment:
-      POSTGRES_URI: postgres://user:secret@postgres:5432/todo_v2
-      REDIS_URI: redis://redis:6379
+      POSTGRES_URI: postgres://user:secret@postgres:5432/todolist-db
     ports:
-      - "3000:3000"
+      - "1337:1337"
     volumes:
-      - ./:/usr/src/todo_v2
-      - /usr/src/todo_v2/node_modules
+      - ./:/usr/src/todolist
+      - /usr/src/auth-api/node_modules
 
   # Postgres service
   postgres:
@@ -23,13 +22,7 @@ services:
     ports:
       - "5432:5432"
     environment:
+      POSTGRES_DB: todolist-db
       POSTGRES_USER: user
       POSTGRES_PASSWORD: secret
-      POSTGRES_DB: todo_v2
       POSTGRES_HOST: postgres
-
-  # Redis service
-  redis:
-    image: redis:6.0.9
-    ports:
-      - "6379:6379"
