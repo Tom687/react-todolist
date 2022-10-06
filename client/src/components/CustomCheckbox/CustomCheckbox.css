@@ -70,7 +70,8 @@
 	position: relative;
 	bottom: 5px;
 	left: 2px;
-	background: url('../../assets/img/checkmark2.png');
+	/*background: url('../../assets/img/checkmark2.png');*/
+	background: url('./checkmark2.png');
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
