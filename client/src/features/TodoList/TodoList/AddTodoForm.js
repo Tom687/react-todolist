@@ -39,20 +39,18 @@ const AddTodoForm = () => {
 			return;
 		
 		try {
-			const response = await axios.post('http://localhost:3000/todos', {
+			const response = await axios.post('/todos', {
 				title: todo.trim(),
 				completed: todo.completed,
 				// TODO : Si todo.completed => status = "fait", sinon "non". Si "fait" => Faire done_on = date.now()
 			});
-			
+
 			if (response.data.status === 'success' || response.status === 201) {
-				console.log('res id', response.data.id);
 				dispatch(addTodo({ text: todo.trim(), id: response.data.id }));
 
 				setTodo('');
 				// TODO : dispatch et setTodo() ici ? Comment faire showAlert ici ? (celui du back)
 			}
-			console.log('res',response);
 		}
 		// TODO : Comment gérer l'err dans "alerts" (js back) depuis le build React ?
 		catch (err) {
