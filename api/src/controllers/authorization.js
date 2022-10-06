@@ -22,11 +22,8 @@ const accessTokenCookieOptions = {
 // Set cookies with tokens
 // Send back tokens
 export const loginAccessToken = catchAsync(async (req, res, next) => {
-	console.log('------')
 	const [ user ] = await db('users').select('id', 'name', 'email', 'role')
 		.where({ email: req.body.email });
-	
-	console.log({user})
 	
 	if (!user) {
 		return next(new AppError('Invalid user', 401));
