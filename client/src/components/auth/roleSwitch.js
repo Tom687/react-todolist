@@ -4,6 +4,17 @@ import { useAuth } from '../../contexts/auth';
 export default function RoleSwitch() {
 	const { currentUser, setCurrentUser } = useAuth();
 	
+	const accessToken = window.localStorage.getItem('accessToken');
+	const baseURL =
+		      process.env.NODE_ENV === 'production'
+		      ? '/api'
+		      : 'http://localhost:1337/';
+	
+	axios.defaults.baseURL = baseURL; //`http://localhost:1337/`;
+	axios.defaults.headers = {
+		authorization: `Bearer ${accessToken}`,
+	};
+	
 	async function login(email, password) {
 		try {
 			const res = await axios.post(`auth/login`, {
