@@ -79,14 +79,14 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 			if (newTodoText.length === 0) {
 				// TODO : Utiliser obj config pour l'ID du todo ?
 				// TODO : Utiliser config authorizationToken ?
-				const res = await axios.delete('http://localhost:3000/todos/' + todo.id);
+				const res = await axios.delete('/todos/' + todo.id);
 				
 				if (res.status === 200 || res.data.status === 'success') {
 					dispatch(removeTodo(todo.id));
 				}
 			}
 			else {
-				const res = await axios.put('http://localhost:3000/todos/' + todo.id, {
+				const res = await axios.put('/todos/' + todo.id, {
 					title: newTodoText.trim()
 				});
 				
@@ -113,14 +113,14 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 			if (newTodoText.length === 0) {
 				// TODO : Utiliser obj config pour l'ID du todo ?
 				// TODO : Utiliser config authorizationToken ?
-				const res = await axios.delete('http://localhost:3000/todos/' + todo.id);
+				const res = await axios.delete('/todos/' + todo.id);
 				
 				if (res.status === 200 || res.data.status === 'success') {
 					dispatch(removeTodo(todo.id));
 				}
 			}
 			else {
-				const res = await axios.put('http://localhost:3000/todos/' + todo.id, {
+				const res = await axios.put('/todos/' + todo.id, {
 					title: newTodoText.trim()
 				});
 				
@@ -140,7 +140,7 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 	
 	const deleteTodo = async () => {
 		try {
-			const res = await axios.delete('http://localhost:3000/todos/' + todo.id);
+			const res = await axios.delete('/todos/' + todo.id);
 			
 			if (res.status === 200 || res.data.status === 'success') {
 				dispatch(removeTodo(todo.id));
@@ -161,7 +161,7 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 			if (status === 'fait') done_on = new Date();
 			else done_on = null;
 			
-			const res = await axios.put('http://localhost:3000/todos/' + todo.id, {
+			const res = await axios.put('/todos/' + todo.id, {
 				status,
 				done_on
 			});
