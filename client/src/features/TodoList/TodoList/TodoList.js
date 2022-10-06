@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import './TodoList.css';
-import TodoItempp from './TodoItempp';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo, addTodosFromDB, editTodo, selectVisibleTodos } from './TodoSlice';
+import { addTodo, addTodosFromDB, editTodo, removeAllTodos, selectVisibleTodos } from './TodoSlice';
 
 import axios from 'axios';
 import TodoItem from './TodoItem';
+import { useAuth } from '../../../contexts/auth';
 
 /*
 * TODO : Général :
@@ -53,7 +53,8 @@ const TodoList = () => {
 	
 	const getDBTodos = async () => {
 		try {
-			const res = await axios.get('http://localhost:3000/todos');
+			const res = await axios.get('/todos');
+			
 			if (res.status === 200 || res.data.status === 'success') {
 				todos = res.data.todos;
 				// TODO : Dispatch tous les todos d'un coup au lieu de loop un à un
@@ -86,9 +87,14 @@ const TodoList = () => {
 	//	}
 	//}, []);
 	
+	const { currentUser } = useAuth();
+	
 	useEffect(() => {
-		getDBTodos();
-	}, []);
+		if (currentUser) {
+			dispatch(removeAllTodos());
+			getDBTodos();
+		}
+	}, [currentUser]);
 	
 	// TODO : Comment passer cette Fn dans TodoItem ? Impossible ?
 	const modifyTodo = (id, newTitle) => {

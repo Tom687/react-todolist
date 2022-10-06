@@ -69,6 +69,9 @@ const TodoSlice = createSlice({
 			//}
 			// TODO : Pourquoi utiliser un return ici ? On ne renvoit pas de valeur ?
 			return state.filter(todo => todo.id !== action.payload);
+		},
+		removeAllTodos(state, action) {
+			return state = [];
 		}
 	},
 });
@@ -102,6 +105,6 @@ export const selectUndoneTodosNumber = createSelector(
 
 const { actions, reducer } = TodoSlice;
 
-export const { addTodo, addTodosFromDB, toggleTodo, toggleAllTodos, editTodo, removeTodo } = actions;
+export const { addTodo, addTodosFromDB, toggleTodo, toggleAllTodos, editTodo, removeTodo, removeAllTodos } = actions;
 
 export default reducer;
