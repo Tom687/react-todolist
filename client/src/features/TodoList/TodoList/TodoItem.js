@@ -10,6 +10,7 @@ import CustomCheckbox from '../../../components/CustomCheckbox/CustomCheckbox';
 import axios from 'axios';
 import useKeyPress from '../../../hooks/useKeyPress';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
+import InlineEditInput from '../../../components/form/inlineEditInput';
 //import './InlineEdit.css';
 
 // TODO : Voir si mieux de passer "text" en props ou le chercher via un sélecteur ? VOIR POUR ID => id étant ds une func
@@ -30,11 +31,11 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 	const enter = useKeyPress('Enter');
 	const escape = useKeyPress('Escape');
 	
-	useOnClickOutside(wrapperRef, () => {
+	/*useOnClickOutside(wrapperRef, () => {
 		if (isEditingActive) {
 			if (editingValue.trim() !== todo.text) {
 				onEditingTodo(id, editingValue.trim());
-				edit2(editingValue.trim());
+				onEdit(editingValue.trim());
 			}
 			setIsEditingActive(false);
 		}
@@ -44,7 +45,7 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 		if (enter) {
 			if (editingValue.trim() !== todo.text) {
 				onEditingTodo(id, editingValue.trim());
-				edit2(editingValue.trim());
+				onEdit(editingValue.trim());
 			}
 			setIsEditingActive(false);
 		}
@@ -67,14 +68,15 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 			onEnter();
 			onEscape();
 		}
-	}, [onEnter, onEscape, isEditingActive]);
+	}, [onEnter, onEscape, isEditingActive]);*/
 	
 	const handleTodoDblClick = useCallback(() => setIsEditingActive(true),
 		[setIsEditingActive]
 	);
 	
 	// TODO : Y'a t'il un intérêt à utiliser useCallback ici ? Permet de ne pas avoir le warning "promise not used" mais à part ça ?
-	const edit2 = useCallback(async (newTodoText) => {
+	const onEdit = useCallback(async (newTodoText) => {
+		console.log({newTodoText})
 		try {
 			if (newTodoText.length === 0) {
 				// TODO : Utiliser obj config pour l'ID du todo ?
@@ -87,13 +89,13 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 			}
 			else {
 				const res = await axios.put('/todos/' + todo.id, {
-					title: newTodoText.trim()
+					[newTodoText.name]: newTodoText.value.trim()
 				});
 				
 				// TODO : Utilité de ce code ? Afficher message de succès ? Sinon inutile
 				if (res.status === 200 || res.data.status === 'success') {
 					console.log('edit success', res.data);
-					//dispatch(editTodo({ id: todo.id, text: newTodoText.trim() }));
+					dispatch(editTodo({ id: todo.id, text: newTodoText.value.trim() }));
 				}
 			}
 		}
@@ -103,40 +105,6 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 			console.error('Err edit todo', err);
 		}
 	}, []);
-	
-	
-	// TODO : trim() ne fonctionne pas (on peut ajouter un espace à la fin ou début du todo en editant)
-	const edit = async () => {
-		const newTodoText = editingValue.trim();
-		
-		try {
-			if (newTodoText.length === 0) {
-				// TODO : Utiliser obj config pour l'ID du todo ?
-				// TODO : Utiliser config authorizationToken ?
-				const res = await axios.delete('/todos/' + todo.id);
-				
-				if (res.status === 200 || res.data.status === 'success') {
-					dispatch(removeTodo(todo.id));
-				}
-			}
-			else {
-				const res = await axios.put('/todos/' + todo.id, {
-					title: newTodoText.trim()
-				});
-				
-				// TODO : Utilité de ce code ? Afficher message de succès ? Sinon inutile
-				if (res.status === 200 || res.data.status === 'success') {
-					console.log('edit success', res.data);
-					//dispatch(editTodo({ id: todo.id, text: newTodoText.trim() }));
-				}
-			}
-		}
-		catch (err) {
-			// TODO : Comment afficher erreur avec alerte "générale" ?
-			// TODO : Faire 2 try / catch pour catch err si suppr ou si edit ? Ou un seul pour les 2 est bon ?
-			console.error('Err edit todo', err);
-		}
-	};
 	
 	const deleteTodo = async () => {
 		try {
@@ -175,6 +143,14 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 		}
 	};
 	
+	const [inputValue, setInputValue] = useState(text);
+	
+	
+	/*useEffect(() => {
+		if (inputValue) {
+			setIsEditingActive(!isEditingActive)
+		}
+	}, [inputValue]);*/
 	
 	// TODO : Quand on sort de isEditing, le .checked de checkbox disparait mais le style du li reste (= done)
 	// TODO : Si todo.completed : ajouter .checked sur CustomCheckbox
@@ -183,12 +159,13 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 			ref={wrapperRef}
 			// TODO : Si un todo n'est pas class .done, il ne peut pas être checked dans CustomCheckbox
 			className={clsx('todo-item', { 'done': todo.completed }, { 'editing': isEditingActive })}
+			onDoubleClick={handleTodoDblClick}
 		>
 			<CustomCheckbox
 				onClick={() => changeTodoStatus()}
 				done={todo.completed}
 			/>
-			<label
+			{/*<label
 				// TODO : Revoir le css du label ?
 				onDoubleClick={handleTodoDblClick}
 				className={`inline-text_copy inline-text_copy--${
@@ -206,7 +183,23 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 				className={`inline-text_input inline-text_input--${
 					isEditingActive ? "active" : "hidden"
 				}`}
-			/>
+			/>*/}
+			{/*<div className="form-group">*/}
+			{/*<div className="test">*/}
+			{/*<span onDoubleClick={handleTodoDblClick}>*/}
+				<InlineEditInput
+					initialValue={inputValue}
+					setInitialValue={setInputValue}
+					name="title"
+					onSave={onEdit}
+					
+					//{ ...register('title') }
+				/>
+			{/*</span>*/}
+			
+			{/*</div>*/}
+			
+			{/*</div>*/}
 			<button
 				// TODO : Pourquoi utiliser ::after pour afficher le contenu (comme &times; ?) (comme ça dans todo-mvc-css)
 				className="delete-todo"

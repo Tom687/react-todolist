@@ -13,6 +13,7 @@
 	/*height: 63px;*/
 	font-weight: 300;
 	line-height: 1.4;
+	display: flex;
 }
 
 .todo-item:last-child {
@@ -117,18 +118,38 @@
 	color: #cc9a9a;
 }*/
 
-.todo-item.editing {
+.todo-item.editing, .todo-item.editing .test {
 	/*margin-left: 2.5rem;*/
-	padding: 0;
+	/*padding: 0;
 	margin: 0;
-	padding-left: 3.5rem;
+	padding-left: 3.5rem;*/
 	/*transition: 0s;*/
-	height: 64px;
+	/*height: 64px;*/
+	display: flex;
+	flex-direction: row;
 }
 
-.todo-item.editing > input {
+.todo-item.editing input {
 	/*margin-left: 3.5rem;*/
 	/*height: fit-content;*/
+	/*width: 100%;
+	height: 100%;*/
+	line-height: 1.4;
+	border: 1px solid #999;
+	-webkit-box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding-left: 0.95rem;
+	padding-bottom: 3px;
+	/* TODO : Normalement pas besoin de pos:r et bottom:40px pour que l'input soit centré */
+	position: relative;
+	flex-grow: 1;
+	/*width: 100%;*/
+	/*bottom: 40px;*/
+}
+
+.test > input {
 	width: 100%;
 	height: 100%;
 	line-height: 1.4;
