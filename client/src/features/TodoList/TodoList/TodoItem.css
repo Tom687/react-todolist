@@ -149,6 +149,15 @@
 	/*bottom: 40px;*/
 }
 
+.todo-item.editing input:focus {
+	outline: none;
+}
+
+.todo-item .inline-edit {
+	display: flex;
+	width: 100%;
+}
+
 .test > input {
 	width: 100%;
 	height: 100%;
