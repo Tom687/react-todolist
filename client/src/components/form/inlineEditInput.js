@@ -108,7 +108,7 @@ export default function InlineEditInput({
 	return (
 		
 		// Render span element
-		<div ref={wrapperRef} >
+		<TextWrapper ref={wrapperRef} className="inline-edit">
 			{ // Use JavaScript's ternary operator to specify <span>'s inner content
 				expanded ? elementType !== 'textarea' ?
 			  (
@@ -149,7 +149,7 @@ export default function InlineEditInput({
 				expanded &&
 					<EditIcon type="button" onClick={handleSubmit}>Edit</EditIcon>
 			}*/}
-		</div>
+		</TextWrapper>
 	);
 }
 
