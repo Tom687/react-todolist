@@ -129,7 +129,7 @@
 	flex-direction: row;
 }
 
-.todo-item.editing input {
+.todo-item.editing input[type="text"] {
 	/*margin-left: 3.5rem;*/
 	/*height: fit-content;*/
 	/*width: 100%;
@@ -144,8 +144,8 @@
 	padding-bottom: 3px;
 	/* TODO : Normalement pas besoin de pos:r et bottom:40px pour que l'input soit centré */
 	position: relative;
-	flex-grow: 1;
-	/*width: 100%;*/
+	/*flex-grow: 1;*/
+	width: 95%;
 	/*bottom: 40px;*/
 }
 
