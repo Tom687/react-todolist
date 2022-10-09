@@ -1,4 +1,4 @@
-import React, { /*useEffect,*/ useState } from 'react';
+import React, { useState } from 'react';
 
 import './Footer.css';
 import FilterLink from './FilterLink';
@@ -6,14 +6,7 @@ import { setVisibilityFilter, VisibilityFilters } from './FilterSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUndoneTodosNumber } from '../TodoList/TodoSlice';
 
-/*
-* TODO :
-*  => Cacher les FilterLink si pas d'item
-*  => Animer en transitions + styles :
-*  => Ajouter un bouton général "supprimer les terminés"
-* */
 const Footer = () => {
-	// TODO : Comment mieux gérer (- de props) activeFilter ? (et le onClick en général ? => Répétition des props)
 	const [activeFilter, setActiveFilter] = useState(null);
 	const dispatch = useDispatch();
 	

@@ -30,27 +30,8 @@ import { useAuth } from '../../../contexts/auth';
 const TodoList = () => {
 	const dispatch = useDispatch();
 	let todos = useSelector(selectVisibleTodos);
-	//const [todoss, setTodoss] = useState([]);
 	
-	/*useEffect(() => {
-		(async () => {
-			//let response= await fetchData("https://api.coindesk.com/v1/bpi/currentprice.json");
-			//setData(response);
-			try {
-				const res = await axios.get('http://localhost:3000/todos');
-				if (res.status === 200 || res.data.status === 'success') {
-					//setTodos(res.data.todoss);
-					todos = res.data.todos;
-					return res.data.todos;
-				}
-			}
-			catch (err) {
-				console.error('ERR GETDBTODOS', err);
-			}
-			
-		})();
-	}, []);*/
-	
+
 	const getDBTodos = async () => {
 		try {
 			const res = await axios.get('/todos');
@@ -61,31 +42,12 @@ const TodoList = () => {
 				for (let i in todos) {
 					dispatch(addTodosFromDB(todos[i]));
 				}
-				//return res.data.todos;
 			}
 		}
 		catch (err) {
 			console.error('ERR GETDBTODOS', err);
 		}
 	};
-	
-	// TODO : Utilise useCallback() ici ?
-	//const getDb = useCallback(async () => {
-	//	try {
-	//		const res = await axios.get('http://localhost:3000/todos');
-	//		if (res.status === 200 || res.data.status === 'success') {
-	//			todos = res.data.todos;
-	//			// TODO : Dispatch tous les todos d'un coup au lieu de loop un à un
-	//			for (let i in todos) {
-	//				dispatch(addTodosFromDB(todos[i]));
-	//			}
-	//			//return res.data.todos;
-	//		}
-	//	}
-	//	catch (err) {
-	//		console.error('ERR GETDBTODOS', err);
-	//	}
-	//}, []);
 	
 	const { currentUser } = useAuth();
 	

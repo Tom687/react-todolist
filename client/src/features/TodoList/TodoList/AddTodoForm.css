@@ -42,10 +42,6 @@ button.toggle-all-todos {
 }
 
 button.toggle-all-todos:focus {
-	/*outline-color: rgba(175, 91, 94, 0.3);*/
 	outline: none;
-	/* TODO : Voir la meilleur implémentation du focus : bg-color ou color ? */
-	/*background-color: rgba(175, 91, 94, 0.3);
-	border-radius: 50%;*/
 	color: rgba(175, 91, 94, 0.6);
 }

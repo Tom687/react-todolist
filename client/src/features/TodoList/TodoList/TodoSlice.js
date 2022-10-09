@@ -1,9 +1,6 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit';
-//import { createSelector } from 'reselect';
 
 import { VisibilityFilters } from '../Filter/FilterSlice';
-
-let nextTodoId = 0;
 
 const TodoSlice = createSlice({
 	name: 'todos',
@@ -17,22 +14,9 @@ const TodoSlice = createSlice({
 	}*/
 	[],
 	reducers: {
-		/*
-		* TODO : addTodo est avec reducer / prepare ici car on créer l'ID ici même. Ne serait pas comme ça si dans DB
-		* */
-		//addTodo:/*(state, action)*/ {
-		//	reducer(state, action) {
-		//		const { id, text } = action.payload;
-		//		state.push({ id, text, completed: false });
-		//	},
-		//	prepare(text, id) {
-		//		return { payload: { text, id/*: nextTodoId++*/ }};
-		//	}
-		//},
-		// TODO : Voir si ID de la DB est bien récupéré et inséré dans Redux (pour pouvoir modifier un todo sans refresh)
 		addTodo(state, action) {
 			const { id, text } = action.payload;
-			console.log('redux ID', id);
+
 			state.push({ id, text, completed: false });
 		},
 		addTodosFromDB(state, action) {
@@ -62,12 +46,6 @@ const TodoSlice = createSlice({
 			}
 		},
 		removeTodo(state, action) {
-			//const todo = state.find(todo => todo.id === action.payload);
-			//console.log('DEL TODO PAY', action.payload);
-			//if (todo) {
-			//	delete state[action.payload]//state.id[action.payload];
-			//}
-			// TODO : Pourquoi utiliser un return ici ? On ne renvoit pas de valeur ?
 			return state.filter(todo => todo.id !== action.payload);
 		},
 		removeAllTodos(state, action) {

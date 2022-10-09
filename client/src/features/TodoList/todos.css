@@ -1,4 +1,5 @@
 .todos {
+	/* TODO : Tester display: flex + flex-direction: column et repatir de là ? */
 	display: block;
 	margin: 0 auto;
 	/*display: flex;

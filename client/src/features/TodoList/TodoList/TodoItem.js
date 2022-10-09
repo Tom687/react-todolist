@@ -1,24 +1,15 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 
-//import styles from './TodoItem.module.css';
 import './TodoItem.css';
 import { useDispatch } from 'react-redux';
 import { editTodo, removeTodo, toggleTodo } from './TodoSlice';
 import CustomCheckbox from '../../../components/CustomCheckbox/CustomCheckbox';
 import axios from 'axios';
 import useKeyPress from '../../../hooks/useKeyPress';
-import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import InlineEditInput from '../../../components/form/inlineEditInput';
-//import './InlineEdit.css';
 
-// TODO : Voir si mieux de passer "text" en props ou le chercher via un sélecteur ? VOIR POUR ID => id étant ds une func
-/*
-* TODO :
-*  => Faire en sorte que l'input (en mode editing) prenne tout le li sans rien faire bouger
-* */
-// TODO : Unifier Redux et API (completed = true / false au front et "fait" / "non" au back. Text au front et title au back pour le titre,…)
 const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 	const dispatch = useDispatch();
 
@@ -26,50 +17,7 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 	const [editingValue, setEditingValue] = useState(text);
 	
 	const wrapperRef = useRef(null);
-	const inputRef = useRef(null);
-	
-	const enter = useKeyPress('Enter');
-	const escape = useKeyPress('Escape');
-	
-	/*useOnClickOutside(wrapperRef, () => {
-		if (isEditingActive) {
-			if (editingValue.trim() !== todo.text) {
-				onEditingTodo(id, editingValue.trim());
-				onEdit(editingValue.trim());
-			}
-			setIsEditingActive(false);
-		}
-	});
-	
-	const onEnter = useCallback(() => {
-		if (enter) {
-			if (editingValue.trim() !== todo.text) {
-				onEditingTodo(id, editingValue.trim());
-				onEdit(editingValue.trim());
-			}
-			setIsEditingActive(false);
-		}
-	}, [enter, editingValue, onEditingTodo]);
-	
-	const onEscape = useCallback(() => {
-		if (escape) {
-			setEditingValue(text);
-			setIsEditingActive(false)
-		}
-	}, [escape, editingValue, onEditingTodo]);
-	
-	useEffect(() => {
-		if (isEditingActive)
-			inputRef.current.focus();
-	}, [isEditingActive]);
-	
-	useEffect(() => {
-		if (isEditingActive) {
-			onEnter();
-			onEscape();
-		}
-	}, [onEnter, onEscape, isEditingActive]);*/
-	
+
 	const handleTodoDblClick = useCallback(() => setIsEditingActive(true),
 		[setIsEditingActive]
 	);
@@ -144,14 +92,7 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 	};
 	
 	const [inputValue, setInputValue] = useState(text);
-	
-	
-	/*useEffect(() => {
-		if (inputValue) {
-			setIsEditingActive(!isEditingActive)
-		}
-	}, [inputValue]);*/
-	
+
 	// TODO : Quand on sort de isEditing, le .checked de checkbox disparait mais le style du li reste (= done)
 	// TODO : Si todo.completed : ajouter .checked sur CustomCheckbox
 	return (
@@ -184,22 +125,13 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 					isEditingActive ? "active" : "hidden"
 				}`}
 			/>*/}
-			{/*<div className="form-group">*/}
-			{/*<div className="test">*/}
-			{/*<span onDoubleClick={handleTodoDblClick}>*/}
 				<InlineEditInput
 					initialValue={inputValue}
 					setInitialValue={setInputValue}
 					name="title"
 					onSave={onEdit}
-					
 					//{ ...register('title') }
 				/>
-			{/*</span>*/}
-			
-			{/*</div>*/}
-			
-			{/*</div>*/}
 			<button
 				// TODO : Pourquoi utiliser ::after pour afficher le contenu (comme &times; ?) (comme ça dans todo-mvc-css)
 				className="delete-todo"

@@ -1,28 +1,13 @@
-import React/*, { useEffect, useState } */from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 import './FilterLink.css';
 
-// TODO : Comment faire le onClick ici ? (différencier activeFilter de filter ici et pas dans Footer.js ?)
 const FilterLink = ({ filter, onClick, activeFilter, children }) => {
-	/*const [active, setActive] = useState(false);
-	
-	const dispatch = useDispatch();
-	
-	function filterLinkClick(filter) {
-		if (active) {
-			setActive(false);
-		}
-		dispatch(setVisibilityFilter(filter));
-	}*/
-	
 	return (
 		<button
-			// TODO : onClick => setVisibilityFilter
-			//onClick={() => filterLinkClick(filter)}
 			onClick={onClick}
-			//className="filter-link"
 			className={clsx('filter-link', { 'active': activeFilter === filter })}
 		>
 			{ children }

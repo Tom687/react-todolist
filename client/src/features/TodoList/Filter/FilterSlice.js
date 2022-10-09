@@ -11,7 +11,6 @@ const FilterSlice = createSlice({
 	initialState: VisibilityFilters.SHOW_ALL,
 	reducers: {
 		setVisibilityFilter(state, action) {
-			// TODO : Pourquoi on utiliser return ici ? VOIR LA DOC
 			return action.payload;
 		}
 	}

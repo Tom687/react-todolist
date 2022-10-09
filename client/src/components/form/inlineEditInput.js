@@ -28,16 +28,13 @@ export default function InlineEditInput({
 	const esc = useKeyPress('Escape');
 	const tab = useKeyPress('Tab');
 	
-	//inputRef.target = inputRef.current;
-	
-	// TODO : Submit event (onSave(event))
 	const setValues = (value) => {
 		onChange(value);
 		setInitialValue(value);
+		
 		let target = inputRef;
 		target = target.current;
-		//inputRef.target = inputRef.current;
-		//inputRef.target = inputRef.current;
+		
 		onSave({ name: target.name, value: target.value });
 	};
 	
@@ -100,11 +97,6 @@ export default function InlineEditInput({
 		}
 	}, [onEnter, onEscape, onTab, expanded]);
 	
-	const handleSubmit = (e) => {
-		//e.preventDefault();
-		console.log({e})
-		validateAndSetValues(initialValue, value);
-	}
 	return (
 		
 		// Render span element
