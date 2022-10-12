@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const FilterLink = ({ filter, onClick, activeFilter, children }) => {
+	console.log(activeFilter === filter)
 	return (
-		<Button
+		<StyledButton
 			onClick={onClick}
 			//className={clsx('filter-link', { 'active': activeFilter === filter })}
 			isActive={activeFilter === filter}
 		>
 			{ children }
-		</Button>
+		</StyledButton>
 	);
 };
 
@@ -29,7 +30,7 @@ FilterLink.propTypes = {
 	children: PropTypes.string.isRequired,
 };
 
-const Button = styled.button`
+const StyledButton = styled.button`
   cursor: pointer;
   font-size: 1rem;
   padding: 0.1rem 0.25rem;
@@ -41,14 +42,14 @@ const Button = styled.button`
     border: 1px solid #cc9a9a;
 	}
 
-	${props => props.isActive} {
-    border: 1px solid #af5b5e;
-	}
-
   &:focus {
     outline: none;
     background-color: rgba(175, 91, 94, 0.3);
   }
+
+  ${props => !props.isActive} {
+    border: 1px solid #af5b5e;
+ 	}
 `;
 
 export default FilterLink;

@@ -47,7 +47,7 @@ const Todos = styled.div`
 
   button {
     background: none;
-    border: 0;
+    border: 1px solid transparent;
   }
 `;
 

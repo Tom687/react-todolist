@@ -124,6 +124,7 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 					setInitialValue={setInputValue}
 					name="title"
 					onSave={onEdit}
+					className={'iii'}
 					//{ ...register('title') }
 				/>
 			<DeleteButton
@@ -174,7 +175,7 @@ const ItemWrapper = styled.li`
 	}
 	
 	${props => props.isEditing} {
-		input[type="text"] {
+		input[type="text"].iii {
       /*margin-left: 3.5rem;*/
       /*height: fit-content;*/
       /*width: 100%;
