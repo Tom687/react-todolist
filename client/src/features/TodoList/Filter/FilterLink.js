@@ -1,8 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
-
-import './FilterLink.css';
 import styled from 'styled-components';
 
 const FilterLink = ({ filter, onClick, activeFilter, children }) => {
