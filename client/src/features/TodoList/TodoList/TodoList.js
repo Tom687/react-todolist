@@ -1,12 +1,13 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 
-import './TodoList.css';
+//import './TodoList.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo, addTodosFromDB, editTodo, removeAllTodos, selectVisibleTodos } from './TodoSlice';
+import { addTodosFromDB, editTodo, removeAllTodos, selectVisibleTodos } from './TodoSlice';
 
 import axios from 'axios';
 import TodoItem from './TodoItem';
 import { useAuth } from '../../../contexts/auth';
+import styled from 'styled-components';
 
 /*
 * TODO : Général :
@@ -80,19 +81,24 @@ const TodoList = () => {
 	};
 	
 	return (
-		<div className="todolist-container">
-			<ul className="todo-list">
-				{/*{
-					todos.map(todo => (
-						<TodoItem key={todo.id} todo={todo} />
-					))
-				}*/}
+		<ListContainer>
+			{/*<li>*/}
 				{
 					todos.map(newTodo)
 				}
-			</ul>
-		</div>
+			{/*</li>*/}
+		</ListContainer>
 	);
 };
+
+const ListContainer = styled.div`
+  width: 100%;
+  border: 1px solid #e6e6e6;
+  border-bottom: none;
+`;
+
+const List = styled.li`
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+`;
 
 export default TodoList;

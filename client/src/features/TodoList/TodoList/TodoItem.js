@@ -1,20 +1,16 @@
 import React, { useCallback, useRef, useState } from 'react';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
-
-import './TodoItem.css';
 import { useDispatch } from 'react-redux';
 import { editTodo, removeTodo, toggleTodo } from './TodoSlice';
 import CustomCheckbox from '../../../components/CustomCheckbox/CustomCheckbox';
 import axios from 'axios';
-import useKeyPress from '../../../hooks/useKeyPress';
 import InlineEditInput from '../../../components/form/inlineEditInput';
+import styled from 'styled-components';
 
 const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 	const dispatch = useDispatch();
 
 	const [isEditingActive, setIsEditingActive] = useState(false);
-	const [editingValue, setEditingValue] = useState(text);
 	
 	const wrapperRef = useRef(null);
 
@@ -92,14 +88,12 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 	};
 	
 	const [inputValue, setInputValue] = useState(text);
-
-	// TODO : Quand on sort de isEditing, le .checked de checkbox disparait mais le style du li reste (= done)
-	// TODO : Si todo.completed : ajouter .checked sur CustomCheckbox
+	
 	return (
-		<li
+		<ItemWrapper
 			ref={wrapperRef}
-			// TODO : Si un todo n'est pas class .done, il ne peut pas être checked dans CustomCheckbox
-			className={clsx('todo-item', { 'done': todo.completed }, { 'editing': isEditingActive })}
+			completed={todo.completed}
+			isEditing={isEditingActive}
 			onDoubleClick={handleTodoDblClick}
 		>
 			<CustomCheckbox
@@ -132,14 +126,13 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 					onSave={onEdit}
 					//{ ...register('title') }
 				/>
-			<button
-				// TODO : Pourquoi utiliser ::after pour afficher le contenu (comme &times; ?) (comme ça dans todo-mvc-css)
+			<DeleteButton
 				className="delete-todo"
 				onClick={() => deleteTodo()}
 			>
 				&times;
-			</button>
-		</li>
+			</DeleteButton>
+		</ItemWrapper>
 	);
 };
 
@@ -150,5 +143,79 @@ TodoItem.propTypes = {
 		completed: PropTypes.bool.isRequired
 	}).isRequired
 };
+
+const ItemWrapper = styled.li`
+  /*cursor: pointer;*/
+  position: relative;
+  font-size: 1.65rem;
+  transition: color 0.35s;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 0.75rem 1rem;
+  /*height: 63px;*/
+  font-weight: 300;
+  line-height: 1.4;
+  display: flex;
+	
+	&:last-child {
+    border-bottom: none;
+  }
+
+  &:hover .delete-todo {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 0.5rem;
+  }
+	
+	${props => props.completed} {
+    text-decoration: line-through rgba(222, 72, 72, 0.65);
+    color: #d9d9d9;
+    transition: color 0.35s;
+	}
+	
+	${props => props.isEditing} {
+		input[type="text"] {
+      /*margin-left: 3.5rem;*/
+      /*height: fit-content;*/
+      /*width: 100%;
+			\theight: 100%;*/
+      line-height: 1.4;
+      border: 1px solid #999;
+      -webkit-box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+      box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      padding-left: 0.95rem;
+      padding-bottom: 3px;
+      /* TODO : Normalement pas besoin de pos:r et bottom:40px pour que l'input soit centré */
+      position: relative;
+      /*flex-grow: 1;*/
+      width: 95%;
+      /*bottom: 40px;*/
+		}
+
+    input:focus {
+      outline: none;
+    }
+	}
+	
+	label {
+    display: inline-block;
+    width: 90%;
+	}
+`;
+
+const DeleteButton = styled.button`
+  display: none;
+  color: #cc9a9a;
+  font-size: 2rem;
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+	
+	&:hover {
+    color: #af5b5e
+  }
+`;
 
 export default TodoItem;

@@ -3,20 +3,16 @@ import React, { useState } from 'react';
 import './assets/reset.css';
 import './assets/general.css';
 
-import './features/TodoList/todos.css';
+//import './features/TodoList/todos.css';
 import AddTodoForm from './features/TodoList/TodoList/AddTodoForm';
 import TodoList from './features/TodoList/TodoList/TodoList';
 import Footer from './features/TodoList/Filter/Footer';
 //import InlineEdit from './components/InlineEdit/InlineEdit';
 import axios from 'axios';
 import RoleSwitch from './components/auth/roleSwitch';
+import styled from 'styled-components';
 
 function App() {
-	
-	const [storedHeading, setStoredHeading] = useState(
-		"Click here to start editing the text!"
-	);
-	const [storedText, setStoredText] = useState("Here's some more, edit away!");
 	
 	const logout = async () => {
 		const res = await axios.get('/logout');
@@ -25,40 +21,34 @@ function App() {
 	};
 	
 	return (
-		/*<Grid />*/
 		<>
-			{/*<Header/>
-			 <Cards/>
-			 <Accordion
-			 title="1er volet"
-			 >
-			 <p>Ceci est le 1er paragraphe de l'accordion. Il parle du Lion que voici :</p>
-			 <p>Le Lion est un spécimène très rare et recherché de nos jours. On l'aime pour ses poils doux et velus.</p>
-			 </Accordion>
-			 <div className="todos">
-			 <AddTodoForm/>
-			 <TodoList/>
-			 <Footer/>
-			 </div>*/}
-			<div className="todos">
-				{/*<h2>
-					 Not editable right here.{" "}
-					<InlineEdit
-						text={storedHeading}
-						onSetText={text => setStoredHeading(text)}
-					/>
-				</h2>
-				<p>
-					<InlineEdit text={storedText} onSetText={text => setStoredText(text)} />
-				</p>*/}
+			<Todos>
 				<button onClick={() => logout()}>Logout</button>
 				<RoleSwitch />
 				<AddTodoForm/>
 				<TodoList/>
 				<Footer/>
-			</div>
+			</Todos>
 		</>
 	);
 }
+
+// TODO : Rename !!
+const Todos = styled.div`
+  display: block;
+  margin: 0 auto;
+  /*display: flex;
+	\tflex-direction: column;
+	\talign-items: center;*/
+  max-width: 600px;
+  /* TODO : Général pas pris en compte (override par les autres .css) */
+  line-height: 1.4;
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  button {
+    background: none;
+    border: 0;
+  }
+`;
 
 export default App;
