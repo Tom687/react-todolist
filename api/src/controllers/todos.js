@@ -4,27 +4,17 @@ import db from '../utils/postgresDB.js';
 import moment from 'moment';
 
 export const insertTodo = catchAsync(async (req, res, next) => {
-	const { title, completed } = req.body;
+	const { title } = req.body;
 	
 	if (!title || title === 'e')
 		return next(new AppError('Il manque des infos pour insérer le todo en DB', 400));
 
-	let status, doneOn;
-	if (completed === true) {
-		status = 'fait';
-		doneOn = moment(); // TODO : Voir si moment() donne la bonne heure ? Utiliser locale ?
-	}
-	else if (completed === false) {
-		status = 'non';
-		doneOn = undefined;
-	}
-
 	const [insertedTodo] = await db('todos').insert({
 		id_member: res.locals.user.id,
 		title,
-		status,
+		//status: 'non',
 		created_on: moment(), // TODO : Voir si moment() donne la bonne heure ? Utiliser locale ?
-		done_on: doneOn,
+		//done_on: undefined,
 	}, ['id']);
 
 	res.status(201).json({
