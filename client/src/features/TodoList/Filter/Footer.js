@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import './Footer.css';
 import FilterLink from './FilterLink';
 import { setVisibilityFilter, VisibilityFilters } from './FilterSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUndoneTodosNumber } from '../TodoList/TodoSlice';
+import styled from 'styled-components';
 
 const Footer = () => {
 	const [activeFilter, setActiveFilter] = useState(null);
@@ -19,11 +19,11 @@ const Footer = () => {
 	}
 	
 	return (
-		<div className="footer">
-			<span className="undone-todos">
+		<FooterWrapper>
+			<UndoneTodoNb>
 				{ undoneTodosNumber || 'Aucune' } { todosLeftWord }
-			</span>
-			<div className="filters">
+			</UndoneTodoNb>
+			<div>
 				<FilterLink
 					filter={VisibilityFilters.SHOW_ALL}
 					onClick={() => toggleFilter(VisibilityFilters.SHOW_ALL)}
@@ -47,8 +47,23 @@ const Footer = () => {
 				</FilterLink>
 			</div>
 			
-		</div>
+		</FooterWrapper>
 	);
 };
+
+const FooterWrapper = styled.footer`
+  text-align: center;
+  border: 1px solid #e6e6e6;
+  border-radius: 0 0 5px 5px;
+  padding: 0.75rem 1rem;
+  position: relative;
+  font-size: 14px;
+`;
+
+const UndoneTodoNb = styled.div`
+  position: absolute;
+  left: 1.25rem;
+  padding-top: 3px;
+`;
 
 export default Footer;
