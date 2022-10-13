@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './assets/reset.css';
 import './assets/general.css';
 
-//import './features/TodoList/todos.css';
 import AddTodoForm from './features/TodoList/TodoList/AddTodoForm';
 import TodoList from './features/TodoList/TodoList/TodoList';
 import Footer from './features/TodoList/Filter/Footer';
-//import InlineEdit from './components/InlineEdit/InlineEdit';
 import axios from 'axios';
 import RoleSwitch from './components/auth/roleSwitch';
 import styled from 'styled-components';

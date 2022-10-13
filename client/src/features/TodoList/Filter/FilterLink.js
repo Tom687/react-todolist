@@ -7,7 +7,6 @@ const FilterLink = ({ filter, onClick, activeFilter, children }) => {
 	return (
 		<StyledButton
 			onClick={onClick}
-			//className={clsx('filter-link', { 'active': activeFilter === filter })}
 			isActive={activeFilter === filter}
 		>
 			{ children }

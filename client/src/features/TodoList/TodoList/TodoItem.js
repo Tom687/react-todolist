@@ -100,32 +100,13 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 				onClick={() => changeTodoStatus()}
 				done={todo.completed}
 			/>
-			{/*<label
-				// TODO : Revoir le css du label ?
-				onDoubleClick={handleTodoDblClick}
-				className={`inline-text_copy inline-text_copy--${
-					!isEditingActive ? "active" : "hidden"
-				}`}
-			>{
-				// TODO : Retourner le nom du todo => Chercher dans le state => selector ? Ou en props ?
-				todo.text
-			}</label>
-			<input
-				ref={inputRef}
-				value={editingValue}
-				// TODO : Voir pourquoi on utilise pas la syntaxe normale : (e) => setIsEditingValue(e.target.value)
-				onChange={e => setEditingValue(e.target.value)}
-				className={`inline-text_input inline-text_input--${
-					isEditingActive ? "active" : "hidden"
-				}`}
-			/>*/}
-				<InlineEditInput
-					initialValue={inputValue}
-					setInitialValue={setInputValue}
-					name="title"
-					onSave={onEdit}
-					//{ ...register('title') }
-				/>
+			<InlineEditInput
+				initialValue={inputValue}
+				setInitialValue={setInputValue}
+				name="title"
+				onSave={onEdit}
+				//{ ...register('title') }
+			/>
 			<DeleteButton
 				className="delete-todo"
 				onClick={() => deleteTodo()}

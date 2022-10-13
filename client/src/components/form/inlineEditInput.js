@@ -1,5 +1,3 @@
-// https://www.educative.io/answers/how-to-edit-text-on-double-click-in-reactjs
-
 import { useCallback, useEffect, useRef } from 'react';
 import useToggle from '../../hooks/useToggle';
 import useInput from '../../hooks/useInput';

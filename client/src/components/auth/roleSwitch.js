@@ -22,7 +22,6 @@ export default function RoleSwitch() {
 				password,
 			});
 			
-			// TODO : JWT system (accessToken)
 			if (res.status === 200 || res.data.status === 'success') {
 				if (
 					res.data.user.id && res.data.user.email
@@ -31,7 +30,6 @@ export default function RoleSwitch() {
 					window.localStorage.setItem('accessToken', res.data.accessToken);
 					window.localStorage.setItem('user', JSON.stringify(res.data.user));
 					
-					// TODO : Insérer ici les données pour le context Auth (setUser, isLoggedIn)
 					setCurrentUser({
 						...res.data.user,
 						accessToken: res.data.accessToken

@@ -4,8 +4,6 @@ import { VisibilityFilters } from '../Filter/FilterSlice';
 
 const TodoSlice = createSlice({
 	name: 'todos',
-	// TODO : Voir comment gérer le initState ? Si objet, bug car push (addTodo) ne fonctionne pas et todos récupérés
-	//  dans TodoList (useSelector(selectVisibleTodos) bug car todos = objet
 	initialState: /*{
 		id: '',
 		text: '',
@@ -73,7 +71,6 @@ export const selectVisibleTodos = createSelector(
 	}
 );
 
-// TODO : Voir utilité du createSelector ?
 export const selectUndoneTodosNumber = createSelector(
 	[selectTodos],
 	(todos) => {
