@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo, selectUndoneTodosNumber, selectVisibleTodos, toggleAllTodos } from './TodoSlice';
+import { addTodo, selectUndoneTodosNumber, toggleAllTodos } from './TodoSlice';
 import styled from 'styled-components';
 
 const AddTodoForm = () => {
