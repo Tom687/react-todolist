@@ -47,7 +47,12 @@ export const editTodo = catchAsync(async (req, res, next) => {
 
 export const toggleAllTodos = catchAsync(async (req, res, next) => {
 	await db('todos').where({ id_member: res.locals.user.id })
-		.update({ completed: 1 })
+		.update({ completed: req.body.completed });
+	
+	res.status(200).json({
+		status: 'success',
+		message: 'Toggle',
+	})
 });
 
 
