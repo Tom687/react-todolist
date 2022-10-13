@@ -2,14 +2,14 @@ import lodash from 'lodash';
 import { verifyJwt } from '../utils/jwt.js';
 const { get } = lodash;
 
-const deserializeUser = /*catchAsync(async */(req, res, next) => {
+const deserializeUser = (req, res, next) => {
   const accessToken = get(req, 'cookies.accessToken') ||
                       get(req, 'headers.authorization', '')
                         .replace(/^Bearer\s/, '');
   
   // TODO : Retirer erreur ici pour éviter de bloquer les requetes login ?
   if (!accessToken)
-    return next(/*new AppError('Vous n\'êtes pas authorisés à voir cette page - deserializeUser'), 403*/);
+    return next();
   
   const { decoded, valid } = verifyJwt(accessToken);
   
@@ -18,7 +18,7 @@ const deserializeUser = /*catchAsync(async */(req, res, next) => {
     return next();
   }
   
-  else return next(/*new AppError('This should not happen - auth middleware', 400)*/);
-}/*)*/;
+  else return next();
+};
 
 export default deserializeUser;

@@ -8,8 +8,6 @@ CREATE TABLE users (
 	email VARCHAR(255) NOT NULL,
 	role role NOT NULL DEFAULT 'user',
 	hash VARCHAR(255) NOT NULL,
-	reset_psswd_token VARCHAR(255) NULL,
-	reset_psswd_token_expiration TIMESTAMP NULL,
 	joined TIMESTAMP NOT NULL
 );
 

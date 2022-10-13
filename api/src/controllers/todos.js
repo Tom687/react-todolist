@@ -12,9 +12,7 @@ export const insertTodo = catchAsync(async (req, res, next) => {
 	const [insertedTodo] = await db('todos').insert({
 		id_member: res.locals.user.id,
 		title,
-		//status: 'non',
 		created_on: moment(), // TODO : Voir si moment() donne la bonne heure ? Utiliser locale ?
-		//done_on: undefined,
 	}, ['id']);
 
 	res.status(201).json({
@@ -27,7 +25,7 @@ export const insertTodo = catchAsync(async (req, res, next) => {
 export const getTodos = catchAsync(async (req, res, next) => {
 	const todos = await db('todos').select('id', 'id_member AS memberId', 'title', 'status', 'created_on AS createdOn', 'done_on AS doneOn')
 		.where({ id_member: res.locals.user.id })
-		.orderBy('id', 'asc'); // TODO : Pour l'ordre, utiliser un champ "position" ?
+		.orderBy('id', 'asc');
 	
 	res.status(200).json({
 		status: 'success',
@@ -38,7 +36,7 @@ export const getTodos = catchAsync(async (req, res, next) => {
 
 
 export const editTodo = catchAsync(async (req, res, next) => {
-	/*const edit = */await db('todos').where({ id: req.params.id })
+	await db('todos').where({ id: req.params.id })
 		.update(req.body);
 	
 	res.status(200).json({
@@ -49,7 +47,7 @@ export const editTodo = catchAsync(async (req, res, next) => {
 
 
 export const deleteTodo = catchAsync(async (req, res, next) => {
-	/*const removed = */await db('todos').where({ id: req.params.id }).del();
+	await db('todos').where({ id: req.params.id }).del();
 	
 	res.status(200).json({
 		status: 'success',
