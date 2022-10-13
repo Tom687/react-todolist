@@ -127,11 +127,6 @@ export default function InlineEditInput({
 					ref={textRef}
 					onDoubleClick={toggleStatus}
 					onTouchStart={toggleStatus}
-					/*style={{
-					display: 'inline-block',
-					height: '25px',
-					minWidth: '300px',
-					}}*/
 				>
 			{ value }
 				</span>
@@ -147,7 +142,7 @@ export default function InlineEditInput({
 
 // TODO : TextWrapper devrait être un parent ? => Pour pouvoir styliser en dehors d'ici
 const TextWrapper = styled.div`
-  display: flex;
+ 	width: 100%;
 	/*flex-display: row;*/
 	//justify-content: center;
 	

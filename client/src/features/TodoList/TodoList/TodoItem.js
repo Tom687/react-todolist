@@ -124,7 +124,6 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 					setInitialValue={setInputValue}
 					name="title"
 					onSave={onEdit}
-					className={'iii'}
 					//{ ...register('title') }
 				/>
 			<DeleteButton
@@ -174,8 +173,8 @@ const ItemWrapper = styled.li`
     transition: color 0.35s;
 	}
 	
-	${props => props.isEditing} {
-		input[type="text"].iii {
+	${props => !props.isEditing} {
+		input[type="text"] {
       /*margin-left: 3.5rem;*/
       /*height: fit-content;*/
       /*width: 100%;
@@ -187,12 +186,15 @@ const ItemWrapper = styled.li`
       -webkit-box-sizing: border-box;
       box-sizing: border-box;
       padding-left: 0.95rem;
-      padding-bottom: 3px;
+      /*padding-bottom: 3px;*/
       /* TODO : Normalement pas besoin de pos:r et bottom:40px pour que l'input soit centré */
       position: relative;
+      display: flex;
       /*flex-grow: 1;*/
       width: 95%;
       /*bottom: 40px;*/
+			align-self: center;
+			height: 100%;
 		}
 
     input:focus {
