@@ -83,7 +83,7 @@ const Checkmark = styled.span`
   border: 1px solid #e6e6e6;
   vertical-align: sub;
  
-	${props => props.isChecked} {
+	${props => !props.isChecked} {
     border-color: rgba(186, 224, 189, 0.75);
 		
     &::before {
