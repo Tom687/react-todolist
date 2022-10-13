@@ -145,7 +145,7 @@ TodoItem.propTypes = {
 };
 
 const ItemWrapper = styled.li`
-  /*cursor: pointer;*/
+  cursor: pointer;
   position: relative;
   font-size: 1.65rem;
   transition: color 0.35s;
@@ -155,6 +155,7 @@ const ItemWrapper = styled.li`
   font-weight: 300;
   line-height: 1.4;
   display: flex;
+	padding-right: 2rem;
 	
 	&:last-child {
     border-bottom: none;

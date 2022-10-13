@@ -48,7 +48,7 @@ const StyledButton = styled.button`
   }
 
   ${props => !props.isActive} {
-    border: 1px solid #af5b5e;
+    border: 1px solid #af5b5e!important;
  	}
 `;
 
