@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { addTodo, toggleAllTodos } from './TodoSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addTodo, selectUndoneTodosNumber, selectVisibleTodos, toggleAllTodos } from './TodoSlice';
 import styled from 'styled-components';
 
 const AddTodoForm = () => {
 	const [todo, setTodo] = useState('');
+
+	const undoneTodosNumber = useSelector(selectUndoneTodosNumber);
+	const [toggle, setToggle] = useState(false);
+	
+	useEffect(() => {
+		if (undoneTodosNumber === 0) {
+			setToggle(false);
+		}
+		else {
+			setToggle(true);
+		}
+	}, [undoneTodosNumber]);
 	
 	const dispatch = useDispatch();
 	
@@ -35,10 +47,28 @@ const AddTodoForm = () => {
 		}
 	}
 	
+	const toggleAll = async () => {
+		try {
+			const res = await axios.put('/todos', {
+				completed: toggle
+			})
+			
+			if (res.status === 200 || res.data.status === 'success') {
+				dispatch(toggleAllTodos());
+			}
+		}
+		catch (err) {
+			if (err.response) {
+				console.log('ERR.RES toggleAll() AddTodoForm', err.response);
+			}
+			console.error('ERROR toggleAll() AddTodoForm : ', err);
+		}
+	};
+	
 	return (
 		<HeaderWrapper>
 			<ToggleButton
-				onClick={() => dispatch(toggleAllTodos())}
+				onClick={() => toggleAll()}
 			>❯</ToggleButton>
 			<StyledForm
 				onSubmit={(e) => submitBackend(e)}
