@@ -66,15 +66,15 @@ const TodoItem = ({ id, text, todo, onEditingTodo }) => {
 	// TODO : Modifier la date "done_on" si on passe le status à "fait" et le suppr si on passe à "non"
 	const changeTodoStatus = async () => {
 		try {
-			const status = todo.completed ? 'non': 'fait';
+			const status = !todo.completed;
 			let done_on;
 			
 			// TODO : Fixer la date pour avoir la bonne du client (ici on a -1h avec new Date())
-			if (status === 'fait') done_on = new Date();
+			if (status) done_on = new Date();
 			else done_on = null;
 			
 			const res = await axios.put('/todos/' + todo.id, {
-				status,
+				completed: status,
 				done_on
 			});
 			
@@ -149,7 +149,7 @@ const ItemWrapper = styled.li`
     right: 0.5rem;
   }
 	
-	${props => props.completed} {
+	${props => !props.completed} {
     text-decoration: line-through rgba(222, 72, 72, 0.65);
     color: #d9d9d9;
     transition: color 0.35s;
