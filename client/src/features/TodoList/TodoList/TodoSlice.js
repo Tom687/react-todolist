@@ -18,11 +18,9 @@ const TodoSlice = createSlice({
 			state.push({ id, text, completed: false });
 		},
 		addTodosFromDB(state, action) {
-			let { id, title, status } = action.payload;
+			let { id, title, completed } = action.payload;
 			
-			status = status === 'fait';
-			
-			state.push({ id, text: title, completed: status });
+			state.push({ id, text: title, completed });
 		},
 		toggleTodo(state, action) {
 			const todo = state.find(todo => todo.id === action.payload);
