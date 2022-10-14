@@ -10,7 +10,7 @@ export const insertTodo = catchAsync(async (req, res, next) => {
 		return next(new AppError('Il manque des infos pour insérer le todo en DB', 400));
 
 	const [insertedTodo] = await db('todos').insert({
-		id_member: res.locals.user.id,
+		id_user: res.locals.user.id,
 		title,
 		created_on: moment(), // TODO : Voir si moment() donne la bonne heure ? Utiliser locale ?
 	}, ['id']);
