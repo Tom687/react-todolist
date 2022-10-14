@@ -2,7 +2,7 @@ BEGIN TRANSACTION;
 
 CREATE TABLE todos (
 	id SERIAL PRIMARY KEY,
-	id_member INT NOT NULL REFERENCES users(id),
+	id_user INT NOT NULL REFERENCES users(id),
 	title VARCHAR(150) NOT NULL,
 	completed BOOL DEFAULT false,
 	created_on TIMESTAMP NOT NULL,

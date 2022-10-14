@@ -23,8 +23,8 @@ export const insertTodo = catchAsync(async (req, res, next) => {
 });
 
 export const getTodos = catchAsync(async (req, res, next) => {
-	const todos = await db('todos').select('id', 'id_member AS memberId', 'title', 'completed', 'created_on AS createdOn', 'done_on AS doneOn')
-		.where({ id_member: res.locals.user.id })
+	const todos = await db('todos').select('id', 'id_user AS memberId', 'title', 'completed', 'created_on AS createdOn', 'done_on AS doneOn')
+		.where({ id_user: res.locals.user.id })
 		.orderBy('id', 'asc');
 	
 	res.status(200).json({
@@ -46,7 +46,7 @@ export const editTodo = catchAsync(async (req, res, next) => {
 });
 
 export const toggleAllTodos = catchAsync(async (req, res, next) => {
-	await db('todos').where({ id_member: res.locals.user.id })
+	await db('todos').where({ id_user: res.locals.user.id })
 		.update({ completed: req.body.completed });
 	
 	res.status(200).json({
